@@ -15,7 +15,7 @@ class RemoteQuoteDataSourceImpl implements RemoteQuoteDataSource {
   @override
   Future<List<QuoteModel>> fetchQuotes() async {
     final response = await client.get(
-      Uri.parse('https://strangerthings-quotes.vercel.app/api/quotes/5'),
+      Uri.parse('https://strangerthings-quotes.vercel.app/api/quotes/50'),
       headers: {
         'Access-Control-Allow-Origin': '*',
       },
