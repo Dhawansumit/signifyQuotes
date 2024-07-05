@@ -81,4 +81,13 @@ class QuoteRepositoryImpl implements QuoteRepository {
       whereArgs: [id],
     );
   }
+  @override
+  Future<void> changeValue(String id, String value) async {
+    await database.update(
+      'quotes',
+      {'content': value},
+      where: 'id = ?',
+      whereArgs: [id],
+    );
+  }
 }

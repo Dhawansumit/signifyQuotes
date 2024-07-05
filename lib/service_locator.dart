@@ -8,6 +8,7 @@ import 'package:signify_quotes_app/features/quotes/cubit/quotes_cubit.dart';
 import 'package:signify_quotes_app/features/quotes/data/datasources/quote_remote_data_source.dart';
 import 'package:signify_quotes_app/features/quotes/data/repositories/quote_repository_impl.dart';
 import 'package:signify_quotes_app/features/quotes/domain/repositories/quote_repository.dart';
+import 'package:signify_quotes_app/features/quotes/domain/usecases/change_quote_value.dart';
 import 'package:signify_quotes_app/features/quotes/domain/usecases/fetch_quotes.dart';
 import 'package:signify_quotes_app/features/quotes/domain/usecases/rate_quote.dart';
 import 'package:signify_quotes_app/features/quotes/domain/usecases/toggle_favorite.dart';
@@ -33,15 +34,17 @@ Future<void> init() async {
           networkInfo: sl(),
         ))
 
-  // Use cases
-  ..registerLazySingleton(() => FetchQuotes(sl()))
-  ..registerLazySingleton(() => RateQuote(sl()))
-  ..registerLazySingleton(() => ToggleFavorite(sl()))
+    // Use cases
+    ..registerLazySingleton(() => FetchQuotes(sl()))
+    ..registerLazySingleton(() => RateQuote(sl()))
+    ..registerLazySingleton(() => ToggleFavorite(sl()))
+    ..registerLazySingleton(() => ChangeQuoteValue(sl()))
 
-  // Cubit
-  ..registerFactory(() => QuotesCubit(
-        fetchQuotes: sl(),
-        rateQuote: sl(),
-        toggleFavorite: sl(),
-      ));
+    // Cubit
+    ..registerFactory(() => QuotesCubit(
+          fetchQuotes: sl(),
+          rateQuote: sl(),
+          toggleFavorite: sl(),
+          onChangValue: sl(),
+        ));
 }

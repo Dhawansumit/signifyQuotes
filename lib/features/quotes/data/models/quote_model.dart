@@ -1,6 +1,6 @@
 import 'dart:math';
 
-import '../../domain/entities/quote.dart';
+import 'package:signify_quotes_app/features/quotes/domain/entities/quote.dart';
 
 class QuoteModel extends Quote {
   QuoteModel({
@@ -18,7 +18,7 @@ class QuoteModel extends Quote {
         );
 
   factory QuoteModel.fromJson(Map<String, dynamic> json) {
-    print(json);
+
     const _chars =
         'AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz1234567890';
     final Random _rnd = Random();

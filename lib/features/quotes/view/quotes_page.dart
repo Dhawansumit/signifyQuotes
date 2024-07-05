@@ -66,21 +66,29 @@ class _QuotesViewState extends State<QuotesView> {
 
   @override
   Widget build(BuildContext context) {
+
     return Column(
       children: [
         Expanded(
           child: QuoteCard(
-            quote: widget.quotes[currentIndex],
-            onRate: (rating) {
-              context
-                  .read<QuotesCubit>()
-                  .rateQuoteCubit(widget.quotes[currentIndex].id, rating);
-            },
-            onFavoriteToggle: (isFavorite) {
-              context.read<QuotesCubit>().toggleFavoriteCubit(
-                  widget.quotes[currentIndex].id, isFavorite);
-            },
-          ),
+              textEditingController: TextEditingController(
+                text: widget.quotes[currentIndex].content,
+              ),
+              quote: widget.quotes[currentIndex],
+              onRate: (rating) {
+                context
+                    .read<QuotesCubit>()
+                    .rateQuoteCubit(widget.quotes[currentIndex].id, rating);
+              },
+              onFavoriteToggle: (isFavorite) {
+                context.read<QuotesCubit>().toggleFavoriteCubit(
+                    widget.quotes[currentIndex].id, isFavorite);
+              },
+              onChangeValue: (val) {
+                context
+                    .read<QuotesCubit>()
+                    .onChangedValueCubit(widget.quotes[currentIndex].id, val);
+              }),
         ),
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
