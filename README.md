@@ -44,7 +44,9 @@ Cubit: Provides a simpler way to manage state using reactive programming.
 
 ### Dependency Injection
 
-get_it is used as a service locator to manage dependencies:
+get_it is used as a service locator to manage dependencies.
+
+---
 
 ## Running Tests 🧪
 
