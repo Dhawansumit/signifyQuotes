@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import '../../domain/entities/quote.dart';
 
 class QuoteModel extends Quote {
@@ -8,18 +10,26 @@ class QuoteModel extends Quote {
     required bool isFavorite,
     required int rating,
   }) : super(
-    id: id ?? '0',
-    author: author,
-    content: content,
-    isFavorite: isFavorite,
-    rating: rating,
-  );
+          id: id ?? '0',
+          author: author,
+          content: content,
+          isFavorite: isFavorite,
+          rating: rating,
+        );
 
   factory QuoteModel.fromJson(Map<String, dynamic> json) {
+    print(json);
+    const _chars =
+        'AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz1234567890';
+    final Random _rnd = Random();
+
+    String getRandomString(int length) =>
+        String.fromCharCodes(Iterable.generate(
+            length, (_) => _chars.codeUnitAt(_rnd.nextInt(_chars.length))));
     return QuoteModel(
-      id: (json['_id'] ?? '0').toString(),
+      id: (json['_id'] ?? getRandomString(5)).toString(),
       author: json['author'].toString(),
-      content: json['content'].toString(),
+      content: json['quote'].toString(),
       isFavorite: false,
       rating: 0,
     );

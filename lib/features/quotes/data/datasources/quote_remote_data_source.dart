@@ -14,12 +14,15 @@ class RemoteQuoteDataSourceImpl implements RemoteQuoteDataSource {
 
   @override
   Future<List<QuoteModel>> fetchQuotes() async {
-    final response =
-        await client.get(Uri.parse('https://api.quotable.io/quotes?limit=50'));
+    final response = await client.get(
+      Uri.parse('https://strangerthings-quotes.vercel.app/api/quotes/5'),
+      headers: {
+        'Access-Control-Allow-Origin': '*',
+      },
+    );
 
     if (response.statusCode == 200) {
-      final jsonList =
-          json.decode(response.body)['results'] as List<dynamic>;
+      final jsonList = json.decode(response.body) as List<dynamic>;
       return jsonList
           .map((json) => QuoteModel.fromJson(json as Map<String, dynamic>))
           .toList();
