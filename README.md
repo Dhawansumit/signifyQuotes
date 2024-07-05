@@ -27,20 +27,20 @@ _\*Signify Quotes App works on iOS, Android, Web, and Windows._
 
 ---
 ## Architecture 🏛️
-#Clean Architecture
+##Clean Architecture
 Signify Quotes App follows Clean Architecture principles to ensure separation of concerns and maintainability. The architecture is divided into layers:
 
 Domain Layer: Contains business logic and entities.
 Data Layer: Manages data providers and repositories.
 Presentation Layer: Handles UI and user interaction using BLoC/Cubit.
 
-#BLoC and Cubit Usage
+##BLoC and Cubit Usage
 BLoC (Business Logic Component) and Cubit are used for state management:
 
 BLoC: Used for managing complex state and business logic with streams.
 Cubit: Provides a simpler way to manage state using reactive programming.
 
-#Dependency Injection
+##Dependency Injection
 get_it is used as a service locator to manage dependencies:
 
 ## Running Tests 🧪
